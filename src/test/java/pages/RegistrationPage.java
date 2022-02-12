@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -8,6 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
+    private CalendarComponent calendarComponent = new CalendarComponent();
     //locators
     private SelenideElement
 
@@ -25,6 +27,7 @@ public class RegistrationPage {
             currentAddressField = $("#currentAddress");
 
 
+//action
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -55,6 +58,11 @@ public class RegistrationPage {
     public RegistrationPage setUserNumber(String userNumber) {
         userNameInput.setValue(userNumber);
         return this;
+    }
+    public void setBirthDate(String day, String month, String year){
+        $("#dateOfBirthInput").click();
+        calendarComponent.setDate(day, month, year);
+
     }
 
     //
