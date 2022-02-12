@@ -28,6 +28,7 @@ public class RegistrationFormTests {
                         .setUserEmail("alex@work.com")
                         .clickGenderRadio()
                         .setUserNumber("1234567890");
+       registrationPage.setBirthDate("9","August", "1977");
 
         registrationPage.clickFirstHobbies();
         registrationPage.clickOneMoreHobbies();
@@ -36,10 +37,8 @@ public class RegistrationFormTests {
 
 
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOption("1991");
-        $(".react-datepicker__month-select").selectOption("May");
-        $(byText("8")).click();
+
+
         $("#subjectsInput").setValue("civics");
         $(byText("Civics")).click();
 //        $(byText("Sports")).click();
@@ -59,7 +58,7 @@ public class RegistrationFormTests {
                 text("alex@work.com"),
                 text("Male"),
                 text("1234567890"),
-                text("8 May,1991"),
+                text("9 August,1977"),
                 text("Civics"),
                 text("Sports, Music"),
                 text("Lenina street 22"),
