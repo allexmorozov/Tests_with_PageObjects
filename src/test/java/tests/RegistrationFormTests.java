@@ -27,44 +27,18 @@ public class RegistrationFormTests {
                         .setLastName("Frost")
                         .setUserEmail("alex@work.com")
                         .clickGenderRadio()
-                        .setUserNumber("1234567890");
-       registrationPage.setBirthDate("9","August", "1977");
+                        .setUserNumber("1234567890")
+                        .setBirthDate("9","August", "1977")
+                        .setSubjectInput("hindi")
+                        .clickFirstHobbies()
+                        .clickOneMoreHobbies()
+                        .uploadPicture("raja.jpg")
+                        .setCurrentAddress("Lenina street 22")
+                        .selectStateDropdown()
+                        .selectCityDropdown()
+                        .clickSubmitButton()
 
-        registrationPage.clickFirstHobbies();
-        registrationPage.clickOneMoreHobbies();
-        registrationPage.uploadPicture("raja.jpg");
-        registrationPage.setCurrentAddress("Lenina street 22");
-
-
-
-
-
-        $("#subjectsInput").setValue("civics");
-        $(byText("Civics")).click();
-//        $(byText("Sports")).click();
-//        $(byText("Music")).click();
-//        $("#uploadPicture").uploadFromClasspath("raja.jpg");
-//        $("#currentAddress").setValue("Lenina street 22");
-        $("#stateCity-label").scrollTo();
-        $(byText("Select State")).click();
-        $(byText("Haryana")).click();
-        $(byText("Select City")).click();
-        $(byText("Karnal")).click();
-        $("#submit").click();
-
-
-        $(".table-responsive").shouldHave(text("Alex"),
-                text("Frost"),
-                text("alex@work.com"),
-                text("Male"),
-                text("1234567890"),
-                text("9 August,1977"),
-                text("Civics"),
-                text("Sports, Music"),
-                text("Lenina street 22"),
-                text("Haryana Karnal"));
-
-
+                        .checkForm();
     }
 }
 

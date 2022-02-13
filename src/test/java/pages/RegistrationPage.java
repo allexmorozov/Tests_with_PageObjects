@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
     private CalendarComponent calendarComponent = new CalendarComponent();
+
     //locators
     private SelenideElement
 
@@ -20,7 +21,7 @@ public class RegistrationPage {
             userEmailInput = $("#userEmail"),
             genderRadioButton = $(byText("Male")),
             userNameInput = $("#userNumber"),
-
+            subjectInput = $("#subjectsInput"),
             firstHobbiesCheckBox = $(byText("Sports")),
             thirdHobbiesCheckBox = $(byText("Music")),
             uploadPictureForm = $("#uploadPicture"),
@@ -59,27 +60,59 @@ public class RegistrationPage {
         userNameInput.setValue(userNumber);
         return this;
     }
-    public void setBirthDate(String day, String month, String year){
+    public RegistrationPage setBirthDate(String day, String month, String year){
         $("#dateOfBirthInput").click();
         calendarComponent.setDate(day, month, year);
-
+        return this;
     }
-
-    //
-    public void clickFirstHobbies() {
+    public RegistrationPage setSubjectInput(String input){
+       subjectInput.setValue(input);
+        $(byText("Hindi")).click();
+        return this;
+    }
+    public RegistrationPage clickFirstHobbies() {
         firstHobbiesCheckBox.click();
+        return this;
     }
-
-    public void clickOneMoreHobbies() {
+    public RegistrationPage clickOneMoreHobbies() {
         thirdHobbiesCheckBox.click();
+        return this;
     }
-
-    public void uploadPicture(String uploadPicture) {
-        uploadPictureForm.uploadFromClasspath("raja.jpg");
+    public RegistrationPage uploadPicture(String uploadPicture) {
+        uploadPictureForm.uploadFromClasspath(uploadPicture);
+        return this;
     }
-
-    public void setCurrentAddress(String currentAddress) {
+    public RegistrationPage setCurrentAddress(String currentAddress) {
         currentAddressField.setValue(currentAddress);
+        return this;
+    }
+    public RegistrationPage selectStateDropdown(){
+        $("#stateCity-label").scrollTo();
+        $(byText("Select State")).click();
+        $(byText("Haryana")).click();
+        return this;
+    }
+    public RegistrationPage selectCityDropdown(){
+        $(byText("Select City")).click();
+        $(byText("Karnal")).click();
+        return this;
+    }
+    public RegistrationPage clickSubmitButton(){
+        $("#submit").click();
+        return this;
+    }
+    public RegistrationPage checkForm(){
+        $(".table-responsive").shouldHave(text("Alex"),
+                text("Frost"),
+                text("alex@work.com"),
+                text("Male"),
+                text("1234567890"),
+                text("9 August,1977"),
+                text("Hindi"),
+                text("Sports, Music"),
+                text("Lenina street 22"),
+                text("Haryana Karnal"));
+        return this;
     }
 
 }
