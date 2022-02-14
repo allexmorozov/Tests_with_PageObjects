@@ -15,21 +15,27 @@ public class RegistrationPage {
     private SelenideElement
 
             headerTitle = $(".main-header"),
-
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderRadioButton = $(byText("Male")),
-            userNameInput = $("#userNumber"),
+            userNumberInput = $("#userNumber"),
+            birthDateClick = $("#dateOfBirthInput"),
             subjectInput = $("#subjectsInput"),
+            subjectInputChoice = $(byText("Hindi")),
             firstHobbiesCheckBox = $(byText("Sports")),
             thirdHobbiesCheckBox = $(byText("Music")),
             uploadPictureForm = $("#uploadPicture"),
-            currentAddressField = $("#currentAddress");
-
+            currentAddressField = $("#currentAddress"),
+            stateDropdownScroll = $("#stateCity-label"),
+            stateDropdownClick = $(byText("Select State")),
+            stateDropdownChoice = $(byText("Haryana")),
+            cityDropdownClick = $(byText("Select City")),
+            cityDropdownChoice = $(byText("Karnal")),
+            submitButton = $("#submit"),
+            checkFormField = $(".table-responsive");
 
 //action
-
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         headerTitle.shouldHave(text("Practice Form"));
@@ -57,52 +63,62 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setUserNumber(String userNumber) {
-        userNameInput.setValue(userNumber);
+        userNumberInput.setValue(userNumber);
         return this;
     }
-    public RegistrationPage setBirthDate(String day, String month, String year){
-        $("#dateOfBirthInput").click();
+
+    public RegistrationPage setBirthDate(String day, String month, String year) {
+        birthDateClick.click();
         calendarComponent.setDate(day, month, year);
         return this;
     }
-    public RegistrationPage setSubjectInput(String input){
-       subjectInput.setValue(input);
-        $(byText("Hindi")).click();
+
+    public RegistrationPage setSubjectInput(String input) {
+        subjectInput.setValue(input);
+        subjectInputChoice.click();
         return this;
     }
+
     public RegistrationPage clickFirstHobbies() {
         firstHobbiesCheckBox.click();
         return this;
     }
+
     public RegistrationPage clickOneMoreHobbies() {
         thirdHobbiesCheckBox.click();
         return this;
     }
+
     public RegistrationPage uploadPicture(String uploadPicture) {
         uploadPictureForm.uploadFromClasspath(uploadPicture);
         return this;
     }
+
     public RegistrationPage setCurrentAddress(String currentAddress) {
         currentAddressField.setValue(currentAddress);
         return this;
     }
-    public RegistrationPage selectStateDropdown(){
-        $("#stateCity-label").scrollTo();
-        $(byText("Select State")).click();
-        $(byText("Haryana")).click();
+
+    public RegistrationPage selectStateDropdown() {
+        stateDropdownScroll.scrollTo();
+        stateDropdownClick.click();
+        stateDropdownChoice.click();
         return this;
     }
-    public RegistrationPage selectCityDropdown(){
-        $(byText("Select City")).click();
-        $(byText("Karnal")).click();
+
+    public RegistrationPage selectCityDropdown() {
+        cityDropdownClick.click();
+        cityDropdownChoice.click();
         return this;
     }
-    public RegistrationPage clickSubmitButton(){
-        $("#submit").click();
+
+    public RegistrationPage clickSubmitButton() {
+        submitButton.click();
         return this;
     }
-    public RegistrationPage checkForm(){
-        $(".table-responsive").shouldHave(text("Alex"),
+
+    public RegistrationPage checkForm() {
+        checkFormField.shouldHave(text("Alex"),
                 text("Frost"),
                 text("alex@work.com"),
                 text("Male"),
@@ -114,5 +130,4 @@ public class RegistrationPage {
                 text("Haryana Karnal"));
         return this;
     }
-
 }
