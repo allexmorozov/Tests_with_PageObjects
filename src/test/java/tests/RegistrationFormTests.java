@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+
 public class RegistrationFormTests {
     RegistrationPage registrationPage = new RegistrationPage();
 
@@ -31,7 +32,16 @@ public class RegistrationFormTests {
                 .selectStateDropdown()
                 .selectCityDropdown()
                 .clickSubmitButton()
-                .checkForm();
+                .checkForm("Student Name", "Alex Frost")
+                .checkForm("Student Email", "alex@work.com")
+                .checkForm("Gender", "Male")
+                .checkForm("Mobile", "1234567890")
+                .checkForm("Date of Birth", "09 August,1977")
+                .checkForm("Subjects", "Hindi")
+                .checkForm("Hobbies", "Sports, Music")
+                .checkForm("Address", "Lenina street 22")
+                .checkForm("State and City", "Haryana Karnal");
+
     }
 }
 
