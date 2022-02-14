@@ -35,7 +35,7 @@ public class RegistrationPage {
             submitButton = $("#submit"),
             checkFormField = $(".table-responsive");
 
-//action
+    //action
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         headerTitle.shouldHave(text("Practice Form"));
