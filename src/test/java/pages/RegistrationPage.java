@@ -117,17 +117,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkForm() {
-        checkFormField.shouldHave(text("Alex"),
-                text("Frost"),
-                text("alex@work.com"),
-                text("Male"),
-                text("1234567890"),
-                text("9 August,1977"),
-                text("Hindi"),
-                text("Sports, Music"),
-                text("Lenina street 22"),
-                text("Haryana Karnal"));
+     public RegistrationPage checkForm(String fieldName, String value) {
+        checkFormField.$(byText(fieldName))
+                .parent().shouldHave(text(value));
         return this;
     }
 }
