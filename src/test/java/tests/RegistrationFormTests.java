@@ -25,7 +25,15 @@ public class RegistrationFormTests extends TestBase {
                 .selectStateDropdown()
                 .selectCityDropdown()
                 .clickSubmitButton()
-                .checkForm();
+               .checkForm("Student Name", "Alex Frost")
+                .checkForm("Student Email", "alex@work.com")
+                .checkForm("Gender", "Male")
+                .checkForm("Mobile", "1234567890")
+                .checkForm("Date of Birth", "09 August,1977")
+                .checkForm("Subjects", "Hindi")
+                .checkForm("Hobbies", "Sports, Music")
+                .checkForm("Address", "Lenina street 22")
+                .checkForm("State and City", "Haryana Karnal");
     }
 }
 
